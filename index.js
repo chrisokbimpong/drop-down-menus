@@ -1,24 +1,22 @@
-elementArray = document.getElementsByName('cssProperty');
-for (index = 0; index < elementArray.length; index++) {
-    elementArray[index].addEventListener('change', modifyFunction);
+let elements = document.getElementsByName('cssProperty');
+
+let div = document.getElementById('modify');
+
+function set()
+{
+    for( let index = 0; index < elements.length; index++ )
+    {
+        let cssProperty = elements[ index ].getAttribute('id');
+        
+        let cssValue = elements[ index ].value;
+        
+        div.style[ cssProperty ] = cssValue;
+    }
 }
 
-function modifyFunction () {
-    var value = this.value;
-    var idProp = this.id;
-    document.getElementById('modify').style.height = value;
-    document.getElementById('modify').style.width = value;
-    document.getElementById('modify').style.background = value;
-
-    console.log(value);
-    console.log(idProp);
+for (index = 0; index < elements.length; index++) {
+    elements[index].addEventListener('change', set);
 }
 
-// function setHeight () {
-//     let elements = document.getElementById('height').value;
-//     document.getElementById('modify').style.height = elements;
-//     // console.log(elements.value);        
-// }
-
-// document.getElementById('height').addEventListener('change', setHeight);
-
+// https://www.udemy.com/course/javascript-essentials/learn/lecture/4275948#overview
+// 06/10/2020
